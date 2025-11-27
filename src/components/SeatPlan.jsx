@@ -93,9 +93,6 @@ const SeatPlan = () => {
       padding: '20px',
       boxSizing: 'border-box'
     }}>
-      <h1 style={{ marginBottom: '10px', fontSize: '24px' }}>Screen 6</h1>
-      <p style={{ marginBottom: '20px', opacity: 0.7 }}>Select your seats</p>
-      
       <SeatPlanViewport
         seats={seats}
         svgWidth={svgWidth}

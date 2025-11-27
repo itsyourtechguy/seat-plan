@@ -32,7 +32,8 @@ const SeatPlanViewport = ({ seats, svgWidth, svgHeight, zoom, pan, selectedSeats
       preserveAspectRatio="xMidYMid meet"
       style={{
         transform: `scale(${zoom}) translate(${pan.x / zoom}px, ${pan.y / zoom}px)`,
-        transition: isDragging ? 'none' : 'transform 0.1s ease-out'
+        transition: isDragging ? 'none' : 'transform 0.1s ease-out',
+        marginTop: '30px',
       }}
     >
       {seats.map((seat, idx) => {
