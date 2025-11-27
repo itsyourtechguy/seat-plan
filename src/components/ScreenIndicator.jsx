@@ -1,11 +1,9 @@
 // Screen indicator component
 const ScreenIndicator = ({ totalSeats }) => (
   <div style={{
-    position: 'absolute',
-    top: '10px',
-    left: '50%',
-    transform: 'translateX(-50%)',
-    zIndex: 10,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     pointerEvents: 'none'
   }}>
     <svg width="400" height="40" viewBox="0 0 400 40">

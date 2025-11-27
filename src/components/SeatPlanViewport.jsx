@@ -3,7 +3,7 @@ import Seat from "./Seat";
 import MiniMap from "./MiniMap";
 import ScreenIndicator from "./ScreenIndicator";
 
-const SeatPlanViewport = ({ seats, svgWidth, svgHeight, zoom, pan, selectedSeats, onSeatClick, onWheel, onMouseDown, onMouseMove, onMouseUp, isDragging, containerRef, containerSize }) => (
+const SeatPlanViewport = ({ seats, svgWidth, svgHeight, zoom, pan, selectedSeats, onSeatClick, onWheel, onMouseDown, onMouseMove, onMouseUp, onTouchStart, onTouchMove, onTouchEnd, isDragging, containerRef, containerSize }) => (
   <div 
     ref={containerRef}
     style={{
@@ -22,6 +22,9 @@ const SeatPlanViewport = ({ seats, svgWidth, svgHeight, zoom, pan, selectedSeats
     onMouseMove={onMouseMove}
     onMouseUp={onMouseUp}
     onMouseLeave={onMouseUp}
+    onTouchStart={onTouchStart}
+    onTouchMove={onTouchMove}
+    onTouchEnd={onTouchEnd}
   >
     <ScreenIndicator totalSeats={seats.length} />
     
@@ -32,8 +35,7 @@ const SeatPlanViewport = ({ seats, svgWidth, svgHeight, zoom, pan, selectedSeats
       preserveAspectRatio="xMidYMid meet"
       style={{
         transform: `scale(${zoom}) translate(${pan.x / zoom}px, ${pan.y / zoom}px)`,
-        transition: isDragging ? 'none' : 'transform 0.1s ease-out',
-        marginTop: '30px',
+        transition: isDragging ? 'none' : 'transform 0.1s ease-out'
       }}
     >
       {seats.map((seat, idx) => {
