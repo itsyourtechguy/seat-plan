@@ -18,7 +18,7 @@ const SeatPlan = () => {
 
   const seats = sampleData.data;
   const maxX = Math.max(...seats.map(s => s.position_left + s.width)) + 50;
-  const maxY = Math.max(...seats.map(s => s.position_top + s.height)) + 50;
+  const maxY = Math.max(...seats.map(s => s.position_top + s.height)) + 80;
   const svgWidth = maxX;
   const svgHeight = maxY;
 
@@ -157,10 +157,9 @@ const SeatPlan = () => {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      padding: '20px',
+      padding: '10px',
       boxSizing: 'border-box'
     }}>
-      
       <SeatPlanViewport
         seats={seats}
         svgWidth={svgWidth}
