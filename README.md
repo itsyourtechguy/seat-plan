@@ -1,36 +1,57 @@
-Interactive Seat Plan Component
-A responsive React component for displaying and interacting with venue seat plans, optimized for both desktop and mobile devices.
-Features
+🪑 Interactive Seat Plan Component
+
+A fully responsive React component for visualizing and interacting with venue seating layouts—optimized for desktop and mobile with rich navigation, intuitive gestures, and real-time feedback.
+
+✨ Features
 🎯 Core Functionality
 
-Interactive Seat Selection - Click/tap seats to select or deselect them
-Real-time Status Display - Shows available, occupied, and selected seats with distinct visual states
-Responsive Design - Maintains 2:1 aspect ratio and scales to fit any screen size
+    Interactive Seat Selection: Click or tap to select/deselect seats.
+    Real-time Status Display: Clear visual distinction between:
+        ✅ Available seats  
+        🚫 Occupied seats  
+        🔵 Selected seats
+    Fully Responsive: Maintains a 2:1 aspect ratio and scales smoothly across all screen sizes.
 
 🔍 Zoom & Navigation
 
-Desktop Controls - Mouse wheel zoom (100%-300%)
-Touch Gestures - Pinch-to-zoom with two fingers on mobile devices
-Smooth Panning - Drag to navigate when zoomed in
-Mini-map - Appears when zoomed beyond 100%, showing your position and selected seats in the venue
+    Desktop: Mouse wheel zoom (100% – 300%)
+    Mobile: Pinch-to-zoom and drag-to-pan gestures
+    Smooth Panning: Navigate freely when zoomed in
+    Mini-map Overlay: Appears automatically when zoomed beyond 100%, showing viewport position and selected seats
 
 📱 Mobile Optimized
 
-Touch-friendly interface with natural gesture support
-Prevents overscroll and maintains smooth performance
-Responsive button controls as fallback
+    Natural touch gesture support
+    Prevents browser overscroll for seamless UX
+    Fallback button controls for accessibility
 
-Component Structure
+🧩 Component Structure
+
 SeatPlan (Main Component)
-├── SeatPlanViewport (Canvas & Interaction)
-│   ├── ScreenIndicator (Venue screen display)
-│   ├── Seat (Individual seat rendering)
-│   └── MiniMap (Navigation overlay)
-├── ZoomControls (Zoom buttons & info)
-└── Legend (Seat status key)
+├── SeatPlanViewport (Canvas & Interaction Layer)
+│   ├── ScreenIndicator (Stage/screen marker)
+│   ├── Seat (Individual seat renderer)
+│   └── MiniMap (Live navigation overlay)
+├── ZoomControls (Buttons + zoom level indicator)
+└── Legend (Visual key for seat statuses)
 
-Installation
-git clone https://github.com/itsyourtechguy/seat-plan.git
-cd seat-plan
-npm install
-npm run dev (to view locally)
+
+🚀 Installation & Development
+
+    Clone the repository
+
+    bash
+    1 git clone https://github.com/itsyourtechguy/seat-plan.git
+    2 cd seat-plan
+
+Install dependencies
+
+bash
+1 npm install
+
+Start the dev server
+
+bash
+1 npm run dev
+
+Visit http://localhost:5173 (or your Vite default port) to view the demo.
