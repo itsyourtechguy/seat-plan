@@ -9,10 +9,12 @@ const MiniMap = ({ seats, svgWidth, svgHeight, zoom, pan, selectedSeats }) => {
       right: '20px',
       width: '150px',
       height: '75px',
-      background: 'rgba(0, 0, 0, 0.8)',
+      background: 'rgba(10, 10, 10, 0.9)',
       border: '2px solid #4a9eff',
-      borderRadius: '8px',
-      overflow: 'hidden'
+      borderRadius: '10px',
+      overflow: 'hidden',
+      pointerEvents: 'none',
+      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.5)'
     }}>
       <svg width="100%" height="100%" viewBox={`0 0 ${svgWidth} ${svgHeight}`} preserveAspectRatio="xMidYMid meet">
         {seats.map((seat, idx) => {
@@ -25,8 +27,8 @@ const MiniMap = ({ seats, svgWidth, svgHeight, zoom, pan, selectedSeats }) => {
               y={seat.position_top}
               width={seat.width}
               height={seat.height}
-              fill={isSelected ? "#4a9eff" : "#4a9eff"}
-              opacity={isSelected ? "0.8" : "0.3"}
+              fill={isSelected ? "#4a9eff" : "#3a7bc8"}
+              opacity={isSelected ? "0.9" : "0.3"}
             />
           );
         })}
@@ -37,13 +39,15 @@ const MiniMap = ({ seats, svgWidth, svgHeight, zoom, pan, selectedSeats }) => {
           height={svgHeight / zoom}
           fill="none"
           stroke="#4a9eff"
-          strokeWidth="2"
+          strokeWidth="2.5"
+          rx="3"
         />
         <circle
           cx={(svgWidth / 2) - (pan.x / zoom)}
           cy={(svgHeight / 2) - (pan.y / zoom)}
-          r="5"
+          r="6"
           fill="#4a9eff"
+          opacity="0.8"
         />
       </svg>
     </div>

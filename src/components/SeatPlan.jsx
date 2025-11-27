@@ -43,12 +43,9 @@ const SeatPlan = () => {
 
   const handleTouchStart = (e) => {
     if (e.touches.length === 1) {
-      // Single touch - start panning
-      if (e.target.closest('.seat')) return;
       setIsDragging(true);
       setDragStart({ x: e.touches[0].clientX - pan.x, y: e.touches[0].clientY - pan.y });
     } else if (e.touches.length === 2) {
-      // Two finger touch - prepare for pinch zoom
       e.preventDefault();
       setIsDragging(false);
       const distance = getTouchDistance(e.touches[0], e.touches[1]);
@@ -62,7 +59,7 @@ const SeatPlan = () => {
 
   const handleTouchMove = (e) => {
     if (e.touches.length === 1 && isDragging) {
-      // Single touch panning
+      e.preventDefault();
       const newX = e.touches[0].clientX - dragStart.x;
       const newY = e.touches[0].clientY - dragStart.y;
       
@@ -74,7 +71,6 @@ const SeatPlan = () => {
         y: Math.min(Math.max(newY, -maxPanY), maxPanY)
       });
     } else if (e.touches.length === 2) {
-      // Two finger pinch zoom
       e.preventDefault();
       const distance = getTouchDistance(e.touches[0], e.touches[1]);
       
@@ -94,9 +90,9 @@ const SeatPlan = () => {
       setLastTouchDistance(null);
       setTouchStart(null);
     } else if (e.touches.length === 1) {
-      // One finger left, reset for single touch panning
       setLastTouchDistance(null);
       setDragStart({ x: e.touches[0].clientX - pan.x, y: e.touches[0].clientY - pan.y });
+      setIsDragging(true);
     }
   };
 
@@ -108,7 +104,6 @@ const SeatPlan = () => {
   };
 
   const handleMouseDown = (e) => {
-    if (e.target.closest('.seat')) return;
     setIsDragging(true);
     setDragStart({ x: e.clientX - pan.x, y: e.clientY - pan.y });
   };
@@ -133,6 +128,8 @@ const SeatPlan = () => {
     if (seat.seat_selectable === 0) return;
     
     const seatId = `${seat.row_name}-${seat.seat_name}`;
+    if (!seat.seat_name) return;
+    
     const newSelected = new Set(selectedSeats);
     
     if (newSelected.has(seatId)) {
@@ -151,13 +148,13 @@ const SeatPlan = () => {
     <div style={{ 
       width: '100%', 
       minHeight: '100vh', 
-      background: '#000', 
+      background: 'radial-gradient(ellipse at top, #1a1a2e 0%, #0a0a0a 100%)',
       color: '#fff',
-      fontFamily: 'Arial, sans-serif',
+      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      padding: '10px',
+      padding: '20px 10px',
       boxSizing: 'border-box'
     }}>
       <SeatPlanViewport
